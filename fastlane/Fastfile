@@ -72,10 +72,16 @@ platform :ios do
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 
+  desc "List Provisioning Profiles"
+  lane :list_profiles do
+    sh "security find-identity -v -p codesigning"
+  end
+
   desc "Create .ipa"
   lane :build do
     setup_ci
     sync_certificates
+    fastlane list_profiles
     # Unity has specific requirements around codesigning that we have to handle
     # See https://github.com/fastlane/fastlane/discussions/17458 for context
    
@@ -93,7 +99,6 @@ platform :ios do
       targets: "OneSignalNotificationServiceExtension",
       path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       profile_name: "match AppStore com.TestCI.YO.OneSignalNotification",
-      profile_uuid: "aa698b6a-8e41-4936-9d83-366650b31fc8"
     )
 
     update_code_signing_settings(
