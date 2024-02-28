@@ -60,7 +60,7 @@ platform :ios do
     )
 
     # Update iOS Deployment Target
-    modify_info_plist(
+    update_info_plist(
       xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       plist_path: 'Unity-iPhone/Info.plist',
       block: proc do |plist|
