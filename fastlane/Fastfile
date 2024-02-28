@@ -71,7 +71,6 @@ platform :ios do
     # Fix Signing for Extension
     update_project_provisioning(
       xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
-      team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
       build_configuration: 'Release',
       code_signing_identity: 'iPhone Distribution',
       target_filter: 'OneSignalNotificationServiceExtension'
@@ -95,7 +94,7 @@ platform :ios do
       use_automatic_signing: false,
       team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
       code_sign_identity: 'iPhone Distribution',
-      targets: 'Unity-iPhone',
+      # targets: 'Unity-iPhone',
       path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       profile_name: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_profile-name"],
       profile_uuid: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore"]
