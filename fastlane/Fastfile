@@ -62,7 +62,7 @@ platform :ios do
     # Update iOS Deployment Target
     update_info_plist(
       xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
-      plist_path: 'Unity-iPhone/Info.plist',
+      plist_path: 'Info.plist',
       block: proc do |plist|
         plist['MinimumOSVersion'] = '11.0'
       end
