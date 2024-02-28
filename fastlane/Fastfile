@@ -26,12 +26,16 @@ platform :ios do
       key_content: ENV['APPSTORE_P8']
     )
 
+    main_app_bundle_id = ENV["IOS_BUNDLE_ID"]
+    extension_bundle_id = "com.TestCI.YO.OneSignalNotificationServiceExtension"
+    combined_bundle_id = "#{main_app_bundle_id}.#{extension_bundle_id}"
+
     match(
       type: "appstore",
       storage_mode: "git",
       git_url: "git@github.com:#{match_org}/#{match_repo}.git",
-      app_identifier: ENV["IOS_BUNDLE_ID"],
-      readonly: false # Додати параметр readonly
+      app_identifier: [main_app_bundle_id, combined_bundle_id],
+      readonly: false
     )
   end
 
