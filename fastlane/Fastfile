@@ -27,7 +27,7 @@ platform :ios do
     )
 
     main_app_bundle_id = ENV["IOS_BUNDLE_ID"]
-    extension_bundle_id = "com.TestCI.YO.OneSignalNotificationServiceExtension"
+    extension_bundle_id = "OneSignalNotificationServiceExtension"
     combined_bundle_id = "#{main_app_bundle_id}.#{extension_bundle_id}"
 
     match(
