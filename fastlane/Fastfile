@@ -101,7 +101,8 @@ platform :ios do
       code_sign_identity: "iPhone Distribution",
       targets: "OneSignalNotificationServiceExtension",
       path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
-      profile_name: "match AppStore com.TestCI.YO.OneSignalNotification",
+      profile_name: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}.OneSignalNotificationServiceExtension_appstore_profile-name"],
+      profile_uuid: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}.OneSignalNotificationServiceExtension_appstore"]
     )
 
     update_code_signing_settings(
@@ -113,6 +114,7 @@ platform :ios do
       profile_name: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_profile-name"],
       profile_uuid: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore"]
     )
+
     build_app( #alias: gym
       project: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       scheme: 'Unity-iPhone',
