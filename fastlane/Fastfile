@@ -88,6 +88,7 @@ platform :ios do
     # Automatic Signing for OneSignalNotificationServiceExtension
     update_code_signing_settings(
       use_automatic_signing: true,
+      team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
       path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       targets: 'OneSignalNotificationServiceExtension'
     )
