@@ -58,6 +58,25 @@ platform :ios do
         plist['ITSAppUsesNonExemptEncryption'] = false
       end
     )
+
+    # Update iOS Deployment Target
+    modify_info_plist(
+      xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
+      plist_path: 'Unity-iPhone/Info.plist',
+      block: proc do |plist|
+        plist['MinimumOSVersion'] = '11.0'
+      end
+    )
+
+    # Fix Signing for Extension
+    update_project_provisioning(
+      xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
+      target_filter: 'OneSignalNotificationServiceExtension',
+      signing_style: 'manual',
+      team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
+      build_configuration: 'Release'
+    )
+
     build
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
