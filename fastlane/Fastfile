@@ -78,10 +78,20 @@ platform :ios do
     sync_certificates
     # Unity has specific requirements around codesigning that we have to handle
     # See https://github.com/fastlane/fastlane/discussions/17458 for context
+   
+    # Automatic Signing for Unity-iPhone Target
     update_code_signing_settings(
       use_automatic_signing: true,
       path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"
     )
+
+    # Automatic Signing for OneSignalNotificationServiceExtension
+    update_code_signing_settings(
+      use_automatic_signing: true,
+      path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
+      targets: 'OneSignalNotificationServiceExtension'
+    )
+
     update_code_signing_settings(
       use_automatic_signing: false,
       team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
@@ -98,6 +108,7 @@ platform :ios do
       #destination: 'generic/platform=iOS' # Виправити формат
       #destination: "platform=iOS Simulator, id=0FA23C4A-0E4A-4F03-9F6C-32122603E2DA, OS=16.2, name=iPhone 14"
       export_options: {
+        method: 'app-store',
         uploadBitcode: false, # Вимкнути біткод
         compileBitcode: false, # Вимкнути компіляцію біткоду
         #uploadSymbols: true,
