@@ -27,14 +27,13 @@ platform :ios do
     )
 
     main_app_bundle_id = ENV["IOS_BUNDLE_ID"]
-    extension_bundle_id = "OneSignalNotificationServiceExtension"
-    combined_bundle_id = "#{main_app_bundle_id}.#{extension_bundle_id}"
+    extension_bundle_id = "#{ENV["IOS_BUNDLE_ID"]}.OneSignalNotificationServiceExtension"
 
     match(
       type: "appstore",
       storage_mode: "git",
       git_url: "git@github.com:#{match_org}/#{match_repo}.git",
-      app_identifier: [main_app_bundle_id, combined_bundle_id],
+      app_identifier: [main_app_bundle_id, extension_bundle_id],
       readonly: false
     )
   end
