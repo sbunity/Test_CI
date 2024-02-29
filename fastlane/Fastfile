@@ -144,7 +144,7 @@ platform :ios do
     # Debug list all files related to BalasoLocalizationResources
     localization_files = Dir.entries("#{ENV['IOS_BUILD_PATH']}/iOS/BalasoLocalizationResources")
     UI.message("Files in #{ENV['IOS_BUILD_PATH']}/iOS/BalasoLocalizationResources:")
-    ios_build_files.each do |file|
+    localization_files.each do |file|
       UI.message(file)
     end
     
