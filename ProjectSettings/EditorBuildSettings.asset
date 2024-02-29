@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/OneSignal/Example/OneSignalExampleScene.unity
+    guid: 54284d014d2241544a24b57b13c09ac8
+  - enabled: 1
+    path: Assets/Game/UserProfile/Plugins/ImageCropper/Demo/DemoScene.unity
+    guid: c9c3a8b1d560a0146b500a8fc3b06487
   m_configObjects: {}
