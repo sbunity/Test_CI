@@ -85,7 +85,8 @@ platform :ios do
       cocoapods(
           clean: true,
           use_bundle_exec: false,
-          repo_update: true
+          repo_update: true,
+          podfile: "#{ENV['IOS_BUILD_PATH']}/iOS/Podfile"
     )
   end
 
