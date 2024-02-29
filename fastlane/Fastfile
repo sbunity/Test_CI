@@ -85,6 +85,7 @@ platform :ios do
     setup_ci
     sync_certificates
     list_profiles
+
     # Unity has specific requirements around codesigning that we have to handle
     # See https://github.com/fastlane/fastlane/discussions/17458 for context
    
