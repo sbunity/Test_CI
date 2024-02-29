@@ -110,6 +110,7 @@ jobs:
 
           IOS_BUILD_PATH: ${{ format('{0}/build/iOS', github.workspace) }}
           IOS_BUNDLE_ID: com.TestCI.YO # Change it to match your Unity bundle id
+          APP_VERSION: "1.0.0" # Change it to match your app version
           PROJECT_NAME: TestCIYO # Change it to match your project's name
         run: |
           eval "$(ssh-agent -s)"
