@@ -80,6 +80,14 @@ platform :ios do
     sh "security find-identity -v -p codesigning"
   end
 
+  desc "Install cocoapods"
+    lane :install_pods do
+      cocoapods(
+          clean: true,
+          use_bundle_exec: false
+    )
+  end
+
   desc "Create .ipa"
   lane :build do
     setup_ci
@@ -116,9 +124,8 @@ platform :ios do
       profile_uuid: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore"]
     )
 
-    # Force pod install
-    # sh "pod --version"
-    # sh "pod install --project-directory=#{ENV['IOS_BUILD_PATH']}/iOS"
+    # Install pods
+    install_pods
 
     build_app( #alias: gym
       # workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
