@@ -120,7 +120,7 @@ platform :ios do
     sh "pod install --project-directory=#{ENV['IOS_BUILD_PATH']}/iOS"
 
     build_app( #alias: gym
-      project: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
+      workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       scheme: 'Unity-iPhone',
       xcargs: '-allowProvisioningUpdates',
       #destination: 'generic/platform=iOS' # Виправити формат
