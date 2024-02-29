@@ -84,7 +84,8 @@ platform :ios do
     lane :install_pods do
       cocoapods(
           clean: true,
-          use_bundle_exec: false
+          use_bundle_exec: false,
+          repo_update: true
     )
   end
 
