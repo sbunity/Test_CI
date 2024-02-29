@@ -141,6 +141,12 @@ platform :ios do
     ios_build_files.each do |file|
       UI.message(file)
     end
+
+    # Debug print and log the list of files related to BalasoLocalizationResources
+    UI.message("Files in #{ENV['IOS_BUILD_PATH']}/iOS/BalasoLocalizationResources:")
+    ios_build_files.each do |file|
+      UI.message(file)
+    end
     
     build_app( #alias: gym
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
