@@ -134,20 +134,6 @@ platform :ios do
     # Install pods
     install_pods
 
-    # List all files in the directory
-    ios_build_files = Dir.entries("#{ENV['IOS_BUILD_PATH']}/iOS")
-    UI.message("Files in #{ENV['IOS_BUILD_PATH']}/iOS:")
-    ios_build_files.each do |file|
-      UI.message(file)
-    end
-
-    # Debug list all files related to BalasoLocalizationResources
-    localization_files = Dir.entries("#{ENV['IOS_BUILD_PATH']}/iOS/BalasoLocalizationResources")
-    UI.message("Files in #{ENV['IOS_BUILD_PATH']}/iOS/BalasoLocalizationResources:")
-    localization_files.each do |file|
-      UI.message(file)
-    end
-    
     build_app( #alias: gym
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       # project: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
