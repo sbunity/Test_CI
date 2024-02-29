@@ -129,6 +129,19 @@ platform :ios do
     # Install pods
     install_pods
 
+    # Update version & build number
+    # increment_version_number(version_number: ENV['APP_VERSION'])
+    # increment_build_number({ build_number: latest_testflight_build_number(version: ENV['APP_VERSION'], app_identifier: ENV['IOS_BUNDLE_ID']) + 1 }) 
+
+    # List all files in the directory
+    ios_build_files = Dir.entries("#{ENV['IOS_BUILD_PATH']}/iOS")
+    
+    # Print and log the list of files
+    UI.message("Files in #{ENV['IOS_BUILD_PATH']}/iOS:")
+    ios_build_files.each do |file|
+      UI.message(file)
+    end
+    
     build_app( #alias: gym
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       # project: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
