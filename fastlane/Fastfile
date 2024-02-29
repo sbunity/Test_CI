@@ -117,7 +117,7 @@ platform :ios do
     )
 
     # Force pod install
-    sh "pod install --project-directory=#{ENV['IOS_BUILD_PATH']}/iOS"
+    sh "bundle exec pod install --project-directory=#{ENV['IOS_BUILD_PATH']}/iOS"
 
     build_app( #alias: gym
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
