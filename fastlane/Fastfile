@@ -130,19 +130,21 @@ platform :ios do
     install_pods
 
     # Update version & build number
-    # increment_version_number(version_number: ENV['APP_VERSION'])
-    # increment_build_number({ build_number: latest_testflight_build_number(version: ENV['APP_VERSION'], app_identifier: ENV['IOS_BUNDLE_ID']) + 1 }) 
+    version_number = ENV['APP_VERSION'] || '1.0.0'
+    increment_version_number(version_number: version_number)
+    increment_build_number({ build_number: latest_testflight_build_number(version: version_number, app_identifier: ENV['IOS_BUNDLE_ID']) + 1 }) 
 
     # List all files in the directory
     ios_build_files = Dir.entries("#{ENV['IOS_BUILD_PATH']}/iOS")
     
-    # Print and log the list of files
+    # Print the list of files
     UI.message("Files in #{ENV['IOS_BUILD_PATH']}/iOS:")
     ios_build_files.each do |file|
       UI.message(file)
     end
 
-    # Debug print and log the list of files related to BalasoLocalizationResources
+    localization_files = Dir.entries("#{ENV['IOS_BUILD_PATH']}/iOS/BalasoLocalizationResources")
+    # Debug print the list of files related to BalasoLocalizationResources
     UI.message("Files in #{ENV['IOS_BUILD_PATH']}/iOS/BalasoLocalizationResources:")
     ios_build_files.each do |file|
       UI.message(file)
