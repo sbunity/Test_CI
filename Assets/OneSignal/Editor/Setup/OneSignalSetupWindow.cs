@@ -2,7 +2,7 @@
 /*
  * Modified MIT License
  *
- * Copyright 2023 OneSignal
+ * Copyright 2022 OneSignal
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -75,7 +75,7 @@ namespace OneSignalSDK {
                 if (Activator.CreateInstance(stepType) is OneSignalSetupStep step)
                     steps.Add(step);
                 else
-                    UnityEngine.Debug.LogWarning($"could not create setup step from type {stepType.Name}");
+                    Debug.LogWarning($"could not create setup step from type {stepType.Name}");
             }
 
             _setupSteps = steps;
